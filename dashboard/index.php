@@ -100,7 +100,40 @@ require_once "./vistas/parte_superior.php";
     </div>
 </div>  
 
-    
+          
+<!--Modal para CRUD-->
+<div class="modal fade" id="modalCRUDInsertar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelInsertar"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formPersonasInsertar" method="post" action="Recivir.php" >
+            <div class="modal-body">
+                <div class="form-group">
+                <label for="titulo" class="col-form-label">Titulo:</label>
+                <input type="text" class="form-control" id="tituloInsertar">
+                </div>
+                <div class="form-group">
+                <label for="descripcion" class="col-form-label">Descripcion:</label>
+                <input type="text" class="form-control" id="descripcionInsertar">
+                </div>                
+                 <div class="form-group">
+                <label for="fecha" class="col-form-label">Fecha:</label>
+                <input type="date" class="form-control" id="fechaInsertar">
+                </div>             
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit"  name ="Guardar" id="btnGuardar" class="btn btn-dark">Guardar</button>
+            </div>
+        </form>    
+        </div>
+    </div>
+</div>  
+
 </div>
 <!--FIN del cont principal-->
 <?php require_once 'C:\XAMPP\htdocs\dashboard\vistas\parte_inferior.php'?>

@@ -98,5 +98,50 @@ function guardarRegistro() {
     // Cerrar el modal
     document.getElementById("modalCRUD").style.display = "none";
   }
-
+    //escuchar el guardar y mandarlarlo al crud como si fuera por form
+    $("#formPersonas").submit(function(e){
+        e.preventDefault();    
+        id = $.trim($("#id").val());
+        descripcion = $.trim($("#descripcion").val()); 
+        fecha = $.trim($("#fecha").val()); 
+        $.ajax({
+            url: "bd/crud.php",
+            type: "POST",
+            dataType: "json",
+            data: {opcion:opcion,id:id,titulo:titulo, descripcion:descripcion},
+            success: function(data){  
+                console.log(data);
+                id = data[0].id;            
+                titulo = data[0].titulo;
+                descripcion = data[0].descripcion;
+                if(opcion == 1){tablaPersonas.row.add([id,titulo,descripcion]).draw();}
+                else{tablaPersonas.row(fila).data([id,titulo,descripcion]).draw();}            
+            }        
+        });
+        $("#formPersonas").modal("hide");    
+        
+    });  
+        //escuchar el guardar y mandarlarlo al crud como si fuera por form
+        $("#formPersonasInsertar").submit(function(e){
+            e.preventDefault();     
+            descripcion = $.trim($("#descripcionInsertar").val()); 
+            titulo = $.trim($("#tituloInsertar").val()); 
+            fecha = $.trim($("#fechaInsertar").val()); 
+            $.ajax({
+                url: "bd/crud.php",
+                type: "POST",
+                dataType: "json",
+                data: {opcion:opcion,id:id,titulo:titulo, descripcion:descripcion},
+                success: function(data){  
+                    console.log(data);
+                    id = data[0].id;            
+                    titulo = data[0].titulo;
+                    descripcion = data[0].descripcion;
+                    if(opcion == 1){tablaPersonas.row.add([id,titulo,descripcion,fecha]).draw();}
+                    else{tablaPersonas.row(fila).data([id,titulo,descripcion,fecha]).draw();}            
+                }        
+            });
+            $("#formPersonas").modal("hide");    
+            
+        });  
 });
